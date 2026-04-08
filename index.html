@@ -403,21 +403,17 @@ document.getElementById('leadForm').addEventListener('submit', async function(e)
     duration: document.getElementById('duration').value.trim(),
     years: document.getElementById('years').value.trim(),
     diagnosis: document.getElementById('diagnosis').value.trim(),
-    location: document.getElementById('location').value.trim(),
-    diagDate: document.getElementById('diagDate').value.trim(),
-    submitted: new Date().toISOString()
+    injury_location: document.getElementById('location').value.trim(),
+    diagnosis_date: document.getElementById('diagDate').value.trim()
   };
 
   try {
-    const res = await fetch('/api/submit', {
+    await fetch('https://script.google.com/macros/s/AKfycbzCGGXW0vbz_dEUeneQZpC33WBx-JQsvGY45J9XC6QIM7EfqHm-jLPA5-qpNsIQuRVFnA/exec', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData)
+      body: JSON.stringify(formData),
+      mode: 'no-cors'
     });
-    if (!res.ok) throw new Error('Server error');
   } catch (err) {
-    // Silently continue — show thank you regardless so lead isn't lost
-    // Leads will also be saved via fallback
     console.error('Submit error:', err);
   }
 
