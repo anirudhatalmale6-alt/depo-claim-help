@@ -128,6 +128,16 @@ body{font-family:var(--font-body);color:var(--text);background:var(--cream);line
 .footer{background:var(--navy);padding:2.5rem 1.5rem;text-align:center}
 .footer-disc{max-width:800px;margin:0 auto;font-size:.85rem;color:rgba(255,255,255,.35);line-height:1.7}
 .footer-disc a{color:rgba(255,255,255,.5)}
+.footer-links{margin-top:1rem;font-size:.88rem}
+.footer-links a{color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:rgba(255,255,255,.7)}
+.legal-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.6);z-index:9999;align-items:center;justify-content:center;padding:1.5rem}
+.legal-modal-content{background:var(--white);color:var(--text);max-width:700px;width:100%;max-height:85vh;overflow-y:auto;border-radius:8px;padding:2.5rem;position:relative;line-height:1.7;font-size:1rem}
+.legal-modal-content h2{font-family:var(--font-display);font-size:1.6rem;color:var(--navy);margin-bottom:1rem}
+.legal-modal-content h3{font-size:1.05rem;font-weight:600;color:var(--navy);margin:1.2rem 0 .4rem}
+.legal-modal-content p{color:var(--text-light);margin-bottom:.6rem}
+.legal-close{position:absolute;top:1rem;right:1.2rem;background:none;border:none;font-size:1.8rem;color:var(--text-muted);cursor:pointer;line-height:1}
+.legal-close:hover{color:var(--navy)}
 .footer-copy{margin-top:1.2rem;font-size:.82rem;color:rgba(255,255,255,.2)}
 
 /* ---- ANIMATIONS ---- */
@@ -368,8 +378,55 @@ body{font-family:var(--font-body);color:var(--text);background:var(--cream);line
     consent to being contacted by a legal representative regarding your potential claim.
     This website is not affiliated with Pfizer Inc. or any manufacturer of Depo-Provera.
   </p>
-  <p class="footer-copy">&copy; 2026 Depo Lawsuit Help. All rights reserved.</p>
+  <p class="footer-links"><a href="#" onclick="document.getElementById('privacyModal').style.display='flex';return false;">Privacy Policy</a> &nbsp;|&nbsp; <a href="#" onclick="document.getElementById('termsModal').style.display='flex';return false;">Terms of Service</a></p>
+  <p class="footer-copy">&copy; 2026 Depo Claim Help. All rights reserved.</p>
 </footer>
+
+<!-- Privacy Policy Modal -->
+<div id="privacyModal" class="legal-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="legal-modal-content">
+    <button class="legal-close" onclick="this.parentElement.parentElement.style.display='none'">&times;</button>
+    <h2>Privacy Policy</h2>
+    <p><strong>Last updated:</strong> April 8, 2026</p>
+    <h3>Information We Collect</h3>
+    <p>When you submit our case review form, we collect your name, phone number, email address, and information related to your potential legal claim including product usage history and medical diagnosis details.</p>
+    <h3>How We Use Your Information</h3>
+    <p>Your information is used solely to evaluate your potential legal claim and to connect you with a qualified attorney. We may contact you by phone, email, or text message regarding your case submission.</p>
+    <h3>Information Sharing</h3>
+    <p>We may share your information with affiliated law firms and legal professionals for the purpose of evaluating and potentially representing your claim. We do not sell your personal information to third parties for marketing purposes.</p>
+    <h3>Data Security</h3>
+    <p>We implement reasonable security measures to protect your personal information. However, no method of electronic transmission or storage is 100% secure.</p>
+    <h3>Cookies and Analytics</h3>
+    <p>This website may use cookies and analytics tools to improve user experience and track website performance. These tools may collect anonymous usage data.</p>
+    <h3>Your Rights</h3>
+    <p>You may request access to, correction of, or deletion of your personal information by contacting us. California residents have additional rights under the CCPA.</p>
+    <h3>Contact</h3>
+    <p>For privacy-related inquiries, please contact us through the information provided on this website.</p>
+  </div>
+</div>
+
+<!-- Terms of Service Modal -->
+<div id="termsModal" class="legal-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="legal-modal-content">
+    <button class="legal-close" onclick="this.parentElement.parentElement.style.display='none'">&times;</button>
+    <h2>Terms of Service</h2>
+    <p><strong>Last updated:</strong> April 8, 2026</p>
+    <h3>No Attorney-Client Relationship</h3>
+    <p>Submitting your information through this website does not create an attorney-client relationship. An attorney-client relationship is only formed when a written agreement is signed between you and a qualified attorney.</p>
+    <h3>Not Legal Advice</h3>
+    <p>The content on this website is for informational purposes only and does not constitute legal advice. Every case is unique and past results do not guarantee future outcomes.</p>
+    <h3>Advertising Disclosure</h3>
+    <p>This website is an advertisement for legal services. It is not a law firm website. Your information may be shared with participating attorneys who may contact you regarding your potential claim.</p>
+    <h3>Eligibility</h3>
+    <p>The information provided on this site regarding potential claims is general in nature. Whether you have a viable legal claim depends on the specific facts and circumstances of your situation, which must be evaluated by a qualified attorney.</p>
+    <h3>No Guarantee</h3>
+    <p>We make no guarantees about the outcome of any legal matter. Compensation amounts, if any, vary based on individual circumstances.</p>
+    <h3>Contact and Communication</h3>
+    <p>By submitting your information, you consent to being contacted by phone, email, or text message regarding your potential claim. You may opt out of communications at any time.</p>
+    <h3>Changes to Terms</h3>
+    <p>We reserve the right to update these terms at any time. Continued use of this website constitutes acceptance of any changes.</p>
+  </div>
+</div>
 
 <script>
 // Scroll reveal
