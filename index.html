@@ -466,14 +466,23 @@ phoneInput.addEventListener('input', function() {
 // Form submission
 document.getElementById('leadForm').addEventListener('submit', async function(e) {
   e.preventDefault();
+  const nameVal = document.getElementById('name').value.trim();
+  const phoneVal = document.getElementById('phone').value.trim();
+  const emailVal = document.getElementById('email').value.trim();
+
+  if (!nameVal || !phoneVal || !emailVal) {
+    alert('Please fill in your name, phone number, and email to submit your case review.');
+    return;
+  }
+
   const btn = document.getElementById('submitBtn');
   btn.disabled = true;
   btn.textContent = 'Submitting...';
 
   const formData = {
-    name: document.getElementById('name').value.trim(),
-    phone: document.getElementById('phone').value.trim(),
-    email: document.getElementById('email').value.trim(),
+    name: nameVal,
+    phone: phoneVal,
+    email: emailVal,
     product: document.getElementById('product').value.trim(),
     duration: document.getElementById('duration').value.trim(),
     years: document.getElementById('years').value.trim(),
