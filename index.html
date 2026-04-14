@@ -243,32 +243,38 @@ body{font-family:var(--font-body);color:var(--text);background:var(--cream);line
           <input type="email" id="email" name="email" placeholder="your@email.com" required>
         </div>
         <div class="form-group">
-          <label for="product">What birth control product did you use?</label>
-          <input type="text" id="product" name="product" placeholder="Product name">
+          <label for="meningioma">Have you been diagnosed with brain meningioma? *</label>
+          <select id="meningioma" name="meningioma" required style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:5px;padding:.7rem .9rem;font-family:var(--font-body);font-size:.95rem;color:var(--white);outline:none;transition:all .25s;-webkit-appearance:none;appearance:none">
+            <option value="" style="color:#333">-- Select --</option>
+            <option value="Yes" style="color:#333">Yes</option>
+            <option value="No" style="color:#333">No</option>
+            <option value="Unsure" style="color:#333">Not sure / Awaiting diagnosis</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="product">Did you use Depo-Provera for 1 year or more? *</label>
+          <select id="product" name="product" required style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:5px;padding:.7rem .9rem;font-family:var(--font-body);font-size:.95rem;color:var(--white);outline:none;transition:all .25s;-webkit-appearance:none;appearance:none">
+            <option value="" style="color:#333">-- Select --</option>
+            <option value="Yes - 1 to 3 years" style="color:#333">Yes - 1 to 3 years</option>
+            <option value="Yes - 3 to 5 years" style="color:#333">Yes - 3 to 5 years</option>
+            <option value="Yes - 5+ years" style="color:#333">Yes - 5+ years</option>
+            <option value="Less than 1 year" style="color:#333">Less than 1 year</option>
+            <option value="Not sure" style="color:#333">Not sure</option>
+          </select>
         </div>
         <div class="hero-form-row">
           <div class="form-group">
-            <label for="duration">How long did you use it?</label>
-            <input type="text" id="duration" name="duration" placeholder="e.g. 3 years">
+            <label for="years">What years did you use it?</label>
+            <input type="text" id="years" name="years" placeholder="e.g. 2005-2010">
           </div>
           <div class="form-group">
-            <label for="years">What years?</label>
-            <input type="text" id="years" name="years" placeholder="e.g. 2005-2010">
+            <label for="diagDate">When were you diagnosed?</label>
+            <input type="text" id="diagDate" name="diagDate" placeholder="e.g. March 2018">
           </div>
         </div>
         <div class="form-group">
-          <label for="diagnosis">Medical conditions diagnosed?</label>
-          <input type="text" id="diagnosis" name="diagnosis" placeholder="Describe any relevant diagnoses">
-        </div>
-        <div class="hero-form-row">
-          <div class="form-group">
-            <label for="location">Injury location?</label>
-            <input type="text" id="location" name="location" placeholder="e.g. brain">
-          </div>
-          <div class="form-group">
-            <label for="diagDate">When diagnosed?</label>
-            <input type="text" id="diagDate" name="diagDate" placeholder="e.g. March 2018">
-          </div>
+          <label for="diagnosis">Briefly describe your situation</label>
+          <input type="text" id="diagnosis" name="diagnosis" placeholder="Any additional details about your diagnosis">
         </div>
         <button type="submit" class="hero-form-submit" id="submitBtn">Submit Free Case Review</button>
         <p class="form-note">
@@ -469,9 +475,19 @@ document.getElementById('leadForm').addEventListener('submit', async function(e)
   const nameVal = document.getElementById('name').value.trim();
   const phoneVal = document.getElementById('phone').value.trim();
   const emailVal = document.getElementById('email').value.trim();
+  const meningiomaVal = document.getElementById('meningioma').value;
+  const productVal = document.getElementById('product').value;
 
   if (!nameVal || !phoneVal || !emailVal) {
     alert('Please fill in your name, phone number, and email to submit your case review.');
+    return;
+  }
+  if (!meningiomaVal) {
+    alert('Please select whether you have been diagnosed with brain meningioma.');
+    return;
+  }
+  if (!productVal) {
+    alert('Please select how long you used Depo-Provera.');
     return;
   }
 
@@ -483,11 +499,11 @@ document.getElementById('leadForm').addEventListener('submit', async function(e)
     name: nameVal,
     phone: phoneVal,
     email: emailVal,
-    product: document.getElementById('product').value.trim(),
-    duration: document.getElementById('duration').value.trim(),
+    product: productVal,
+    duration: meningiomaVal,
     years: document.getElementById('years').value.trim(),
     diagnosis: document.getElementById('diagnosis').value.trim(),
-    injury_location: document.getElementById('location').value.trim(),
+    injury_location: '',
     diagnosis_date: document.getElementById('diagDate').value.trim()
   };
 
